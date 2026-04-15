@@ -1,5 +1,6 @@
 /* https://docs.gtk.org/gtk3/css-properties.html */
 @define-color color-main #660088;
+@define-color color-desat #7c5a87;
 @define-color color-crit #cc0000;
 @define-color color-bad #eb4d4b;
 @define-color color-okay #3399ff;
@@ -70,8 +71,8 @@ button:hover {
     background: rgba(0, 0, 0, 0.2);
 }
 
-#workspaces button.focused {
-    background-color: #64727D;
+#workspaces button.focused, #workspaces button.active {
+    background-color: @color-desat;
     box-shadow: inset 0 -3px #ffffff;
 }
 
@@ -129,10 +130,10 @@ button:hover {
     background-color: @color-main;
 }
 
-#battery.charging, #battery.plugged {
+/* #battery.charging, #battery.plugged {
     color: #ffffff;
     background-color: #26A65B;
-}
+} */
 
 @keyframes blink {
     to {
