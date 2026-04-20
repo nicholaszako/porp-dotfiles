@@ -12,6 +12,9 @@
 - **Cursor:** hyprcursor
 - **Discord Client**: Vesktop
 
+## Recommended packages
+- **Fonts**: `noto-fonts` and `otf-font-awesome` (for icons)
+
 ## To-do
 - Notifications
 - Unified key bindings and fonts
