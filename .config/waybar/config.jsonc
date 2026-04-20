@@ -163,11 +163,15 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%)  ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-ethernet": "{ipaddr}  ",
+        "tooltip-format": "dev {ifname}\nvia {gwaddr}\nsrc {ipaddr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "tooltip-format-disabled": "Disabled",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": "Disconnected  ",
+        "format-disabled": "Disabled ",
+        "on-click": "bash $HOME/scripts/nettoggle.sh",
+        "on-click-right": "nm-connection-editor"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -200,7 +204,8 @@
         "tooltip-format": "{controller_alias} ({controller_address})",
         "tooltip-format-connected": "{controller_alias} ({controller_address})\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias} ({device_address})",
-        "on-click": "bash $HOME/scripts/bttoggle.sh"
+        "on-click": "bash $HOME/scripts/bttoggle.sh",
+        "on-click-right": "blueman-manager"
     },
     "custom/media": {
         "format": "{icon} {text}",
