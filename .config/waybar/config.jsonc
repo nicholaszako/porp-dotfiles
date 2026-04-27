@@ -7,12 +7,13 @@
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        // "sway/workspaces",
-        // "sway/mode",
-        // "sway/scratchpad",
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad",
+        "sway/window"
         // "custom/media",
-        "hyprland/workspaces",
-        "hyprland/window"
+        // "hyprland/workspaces",
+        // "hyprland/window"
     ],
     // "modules-center": [
     //     // "sway/window"
@@ -46,13 +47,17 @@
             "unlocked": ""
         }
     },
-    "hyprland/workspaces": {
-	"format": "{name}",
-       "persistent-workspaces": {
-             "*": 3 // 3 workspaces by default on every monitor
-       }
+    "sway/workspaces": {
+	    "format": "{name}",
+        "persistent-workspaces": {
+            // Always show first 3 workspaces 
+            "1": [],
+            "2": [],
+            "3": []
+        },
+        "on-click": "activate"
     },
-    "hyprland/window": {
+    "sway/window": {
         "format": "{title}",
         "icon": true,
         "icon-size": 18,
@@ -226,7 +231,7 @@
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
 		"menu-actions": {
 			"shutdown": "shutdown now",
-			"reboot": "reboot now",
+			"reboot": "systemctl reboot",
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}

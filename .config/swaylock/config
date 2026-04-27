@@ -1,0 +1,29 @@
+daemonize
+
+# Black bg
+color=000000
+
+# No inside
+inside-color=00000000
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+
+# No text
+text-color=00000000
+text-clear-color=00000000
+text-caps-lock-color=00000000
+text-ver-color=00000000
+text-wrong-color=00000000
+
+# Highlight purple for key, red for backspace
+key-hl-color=660088
+bs-hl-color=ff0000
+
+# Ring purple on clear, yellow on verify, red on failed auth
+ring-color=000000
+ring-clear-color=660088
+ring-caps-lock-color=00000000
+ring-ver-color=ffff00
+ring-wrong-color=ff0000
