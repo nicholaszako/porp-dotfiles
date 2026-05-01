@@ -5,38 +5,27 @@
     // "height": 28, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
-    // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
         "sway/scratchpad",
         "sway/window"
-        // "custom/media",
-        // "hyprland/workspaces",
-        // "hyprland/window"
     ],
-    // "modules-center": [
-    //     // "sway/window"
-    // ],
     "modules-right": [
         "mpd",
-        // "idle_inhibitor",
-        // "pulseaudio",
         "wireplumber",
         "network",
         "bluetooth",
-        // "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
         "backlight",
+        "battery",
+        "clock",
+        "custom/power"
         // "keyboard-state",
         // "sway/language",
-        "battery",
-        // "battery#bat2",
-        "clock",
         // "tray",
-        "custom/power"
     ],
     "keyboard-state": {
         "numlock": true,
@@ -89,29 +78,26 @@
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10,
+        // "spacing": 10,
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "tooltip-format": "<tt>{:%d} {calendar}</tt>",
+        "format-alt": "{:%Y-%m-%d | %H:%M}",
+        "calendar": {
+            "format": {
+                "today": "<b>{}</b>"
+            }
+        }
     },
     "cpu": {
         "format": "{usage}%  ",
-        "tooltip": false
+        "tooltip": true
     },
     "memory": {
         "format": "{}%  "
@@ -126,15 +112,13 @@
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C  {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{temperatureC}°C  "
+        // "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
-        // "format": "{percent}% {icon}",
-        // "format-icons": ["", "", "", "", "", "", "", "", ""]
-        "format": "{percent}%  "
+        "format": "{percent}%  {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
@@ -147,23 +131,7 @@
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -178,29 +146,11 @@
         "on-click": "bash $HOME/scripts/nettoggle.sh",
         "on-click-right": "nm-connection-editor"
     },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
     "wireplumber": {
         "format": "{volume}%  {icon}",
         "format-muted": "",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle"
     },
     "bluetooth": {
         "format": "{status}  ",
@@ -211,18 +161,6 @@
         "tooltip-format-enumerate-connected": "{device_alias} ({device_address})",
         "on-click": "bash $HOME/scripts/bttoggle.sh",
         "on-click-right": "blueman-manager"
-    },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
         "format" : "⏻",
